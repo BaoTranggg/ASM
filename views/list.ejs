@@ -1,0 +1,174 @@
+<html>
+<head>
+    <title>List page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+    <style>
+        body {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://www.lego.com/cdn/cs/set/assets/blt5df50a333f2a3657/NINJAGO-Home-202305-Block-Mixed-Large.jpg?fit=crop&format=webply&quality=80&width=650&height=720&dpr=1.5");
+          background-size: cover;
+        }
+        th {
+          color: aliceblue;
+        }
+        td {
+          color: aliceblue;
+        }
+        .area {
+          position: relative;
+          z-index: 1;
+	    }
+	    .foo_top_header_one {
+          color: #fff;
+        }
+        .section_padding_100_70 {
+          padding-top: 100px;
+          padding-bottom: 70px;
+        }
+        .foo_top_header_one {
+          color: #fff;
+        }.part {
+          margin-bottom: 30px;
+        }
+        .foo_top_header_one .part > h5 {
+          color: #fff;
+        }
+        .part h5 {
+          margin-bottom: 30px;
+        }
+        .single_contact_info > p, .single_contact_info > h5, .blog_area > a, .foo_top_header_one .part > p {
+          color: rgb(255, 255, 255);
+        }
+        p, ul li, ol li {
+          font-weight: 3000;
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+        }
+        .section_padding_50 {
+          padding: 50px 0;
+        }
+        .bottom_header_one p {
+          color: #fff;
+          margin: 0;
+        }
+        .bottom_header_one a {
+          color: inherit;
+          font-size: 15px;
+        }
+        a, h5 {
+          font-weight: 4000;
+        }
+        .m-top-15 {
+          margin-top: 15px;
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+        }
+        .m-top-15 {
+          margin-top: 15px;
+        }
+        .social_links > li {
+          display: inline-block;
+        }
+        .social_links a {
+          border: 1px solid #ffffff;
+          border-radius: 6px;
+          color: #ff8989;
+          display: inline-block;
+          font-size: 13px;
+          margin-bottom: 3px;
+          padding: 7px 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-2 py-2">
+            <h1>   </h1>
+        </div>
+        <a href="/" style="color: rgb(255, 255, 255)" ><h2>ATN SHOP</h2></a>
+        <a href="/add-product" class="btn btn-success float-right">Add product</a>
+        <table class="table table-hover table-bordered" style="background-color: #a52e34;">
+            <thead>
+                <tr>
+                    <th>product name</th>
+                    <th>product type</th>
+                    <th>product brand</th>
+                    <th>product color</th>
+                    <th>product size</th> 
+                    <th>product price</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <% product.forEach((entry) => { %>
+            <tr ondblclick="handleDeleteproduct('<%= entry.id %>')">
+                <td><%= entry.name %></td>
+                <td><%= entry.type %></td>
+                <td><%= entry.brand %></td>
+                <td><%= entry.color %></td>
+                <td><%= entry.size %></td>
+                <td><%= entry.price %></td>
+                <td>
+                    <input class="btn btn-primary" type="button" value="Update"
+                        onclick="handleUpdateproduct('<%= entry.id %>')">
+                </td>
+                <td>
+                    <input class="btn btn-danger" type="button" value="Delete"
+                        onclick="handleDeleteproduct('<%= entry.id %>')">
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+        <script>
+            function handleUpdateproduct(value) {
+                $(location).attr('href', '/update-product/' + value);
+            }
+            function handleDeleteproduct(value) {
+            $.ajax({
+                url: '/' + value,
+                type: 'Delete',
+                success: function (result) {
+                    $(location).attr('href', '/list');
+                }
+            })
+            }
+        </script>
+    </div>
+</body>
+<footer class="area">
+    <div class="foo_top_header_one section_padding_100_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="part">
+                        <h5>About Us</h5>
+                        <p>As children shape their own worlds with LEGO bricks, we play our part in having a positive impact on the world they live in today and will inherit in the future.</p>
+                    </div>
+                    <div class="part m-top-15">
+                        <h5>Social Links</h5>
+                        <ul class="social_links">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+                            <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_header_one section_padding_50 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p>© All Rights Reserved by <a href="#">My Footer<i class="fa fa-love"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>

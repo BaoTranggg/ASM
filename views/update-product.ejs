@@ -1,0 +1,61 @@
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        body{
+            background-color: #99383f;
+        }
+        label{
+            color: aliceblue;
+        }
+        h2{
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="/list">
+            <h5>&lt; Back to list</h5>
+        </a>
+        <h2>UPDATE product</h2>
+        <form action="/<%= product._id %>" method="POST">
+            <div class="form-group">
+                <label>product ID</label>
+                <input class="form-control" type="text" name='productId' value="<%= product._id %>" disabled>
+            </div>
+            <div class="form-group">
+                <label>product name</label>
+                <input class="form-control" type="text" name='productName' value="<%= product.name %>">
+            </div>
+            <div class="form-group">
+                <label>product type</label>
+                <input class="form-control" type="text" name='productType' value="<%= product.type %>">
+            </div>
+            <div class="form-group">
+                <label>product brand</label>
+                <input class="form-control" type="text" name='productBrand' value="<%= product.brand %>">
+            </div>
+            <div class="form-group">
+                <label>product color</label>
+                <input class="form-control" type="text" name='productColor' value="<%= product.color %>">
+            </div>
+            <div class="form-group">
+                <label>product size</label>
+                <select class="form-control" name='productSize' value="<%= product.size %>">
+                    <option hidden value="">Select one</option>
+                    <option value="36">Small</option>
+                    <option value="37">Big</option>
+                    <option value="37">Medium</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>product price</label>
+                <input class="form-control" type="text" name='productPrice' value="<%= product.price %>">
+            </div>
+            <input id="update-btn" class="btn btn-primary" type="submit" value="SAVE">
+        </form>
+    </div>
+</body>
